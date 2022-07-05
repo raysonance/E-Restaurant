@@ -1,6 +1,6 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export const localRestaurants = [
   {
@@ -35,89 +35,122 @@ export const localRestaurants = [
 export default function ResturantItems(props) {
   return (
     <>
-    {props.resturantData.map((restaurant, index) => (
-      
-    <TouchableOpacity activeOpacity={1} style={{ marginBottom: 10}} key={index}>
-      <View style={{ marginTop: 10, padding: 15, backgroundColor: "white"}}>
-        <ResturantImage url={restaurant.image_url} />
-        <ResturantInfo name={restaurant.name} rating={restaurant.rating} />
-      </View>
-    </TouchableOpacity>
-    ))}
+      {props.resturantData.map((restaurant, index) => (
+        <TouchableOpacity
+          activeOpacity={1}
+          style={{ marginBottom: 10 }}
+          key={index}
+        >
+          <View
+            style={{ marginTop: 10, padding: 15, backgroundColor: "white" }}
+          >
+            <ResturantImage url={restaurant.image_url} />
+            <ResturantInfo name={restaurant.name} rating={restaurant.rating} />
+          </View>
+        </TouchableOpacity>
+      ))}
     </>
-  )
+  );
 }
 
 const ResturantImage = (props) => (
-    <>
-      <Image source={{ uri: props.url }} style={{
-          width: "100%",
-          height: 180,
-      }}/>
-      <TouchableOpacity style={{ position: "absolute", right: 20, top: 15 }}>
-          <MaterialCommunityIcons name="heart-outline" size={25} color="#fff" />
-      </TouchableOpacity>
-    </>
-)
+  <>
+    <Image
+      source={{ uri: props.url }}
+      style={{
+        width: "100%",
+        height: 180,
+      }}
+    />
+    <TouchableOpacity style={{ position: "absolute", right: 20, top: 15 }}>
+      <MaterialCommunityIcons name="heart-outline" size={25} color="#fff" />
+    </TouchableOpacity>
+  </>
+);
 
 const ResturantInfo = (props) => (
-  <View style={{  flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginTop: 10
-        }}
+  <View
+    style={{
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginTop: 10,
+    }}
   >
     <View>
       <Text style={{ fontWeight: "bold", fontSize: 15 }}>{props.name}</Text>
       <Text style={{ color: "grey", fontSize: 13 }}>30-45 mins </Text>
     </View>
     <Rating number={props.rating} />
-  </ View>
-)
+  </View>
+);
 
 const Rating = (props) => (
+  <View
+    style={{
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    <MaterialCommunityIcons
+      name={
+        props.number >= 1
+          ? "star"
+          : props.number >= 0.5
+          ? "star-half-full"
+          : "star-outline"
+      }
+      color="yellow"
+      size={20}
+    />
 
-  <View style={{ 
-    flexDirection: "row",
-    alignItems: "center", 
-    justifyContent: "center" 
-    }}>
-    
-    <MaterialCommunityIcons name={
-      props.number >= 1
-        ? 'star'
-        : props.number >= 0.5
-          ? 'star-half-full'
-          : 'star-outline'
-      } color="yellow" size={20} />
+    <MaterialCommunityIcons
+      name={
+        props.number >= 2
+          ? "star"
+          : props.number >= 1.5
+          ? "star-half-full"
+          : "star-outline"
+      }
+      color="yellow"
+      size={20}
+    />
 
-    <MaterialCommunityIcons name={
-      props.number >= 2
-        ? 'star'
-        : props.number >= 1.5
-          ? 'star-half-full'
-          : 'star-outline'
-      } color="yellow" size={20} />
+    <MaterialCommunityIcons
+      name={
+        props.number >= 3
+          ? "star"
+          : props.number >= 2.5
+          ? "star-half-full"
+          : "star-outline"
+      }
+      color="yellow"
+      size={20}
+    />
 
-    <MaterialCommunityIcons name={
-      props.number >= 3
-        ? 'star'
-        : props.number >= 2.5
-          ? 'star-half-full'
-          : 'star-outline'
-      } color="yellow" size={20} />
+    <MaterialCommunityIcons
+      name={
+        props.number >= 4
+          ? "star"
+          : props.number >= 3.5
+          ? "star-half-full"
+          : "star-outline"
+      }
+      color="yellow"
+      size={20}
+    />
 
-    <MaterialCommunityIcons name={
-      props.number >= 4
-        ? 'star'
-        : props.number >= 3.5
-          ? 'star-half-full'
-          : 'star-outline'
-      } color="yellow" size={20} />
-
-    <MaterialCommunityIcons name={
-      props.number >= 5
-        ? 'star'
-        : props.number >= 4.5
-          ? 'star-half-full'
-          : 'star-outline'
-      } color="yellow" size={20} />
+    <MaterialCommunityIcons
+      name={
+        props.number >= 5
+          ? "star"
+          : props.number >= 4.5
+          ? "star-half-full"
+          : "star-outline"
+      }
+      color="yellow"
+      size={20}
+    />
   </View>
-)
+);
