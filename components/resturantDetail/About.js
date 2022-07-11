@@ -3,19 +3,9 @@ import React from "react";
 import Rating from "../home/Rating";
 
 export default function About({ route }) {
-  const yelpResturantInfo = {
-    image:
-      "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
-    title: "Farmhouse Kitchen Thai Cuisine",
-    price: "$$",
-    rating: 4,
-    reviews: 2340,
-    categories: [{ title: "Thai" }, { title: "Comfort Food" }],
-  };
 
   const { image, title, price, rating, reviews, categories } = route.params;
 
-  console.log(image);
   const formattedCategories = categories.map((cat) => cat.title).join(" • ");
 
   return (
@@ -49,7 +39,7 @@ const ResturantTitle = (props) => (
       style={{
         fontWeight: "600",
         fontSize: 29,
-        width: "65%",
+        width: "75%",
       }}
     >
       {props.text}
@@ -66,7 +56,7 @@ const ResturantInfo = (props) => (
       style={{
         fontSize: 15,
         fontWeight: "400",
-        width: "65%",
+        width: "80%",
         color: "grey",
         marginTop: 4,
         marginVertical: 16,
@@ -75,8 +65,8 @@ const ResturantInfo = (props) => (
       {props.text}
     </Text>
     <Text style={{ marginBottom: 10, fontSize: 18, fontWeight: "400" }}>
-      {" "}
-      Rating:{" "}
+
+      Rating:
     </Text>
     <View style={{ flexDirection: "row", alignItems: "center" }}>
       <Rating color={"#f8e825"} number={props.rating} />

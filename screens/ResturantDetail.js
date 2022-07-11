@@ -7,13 +7,15 @@ import ResturantItems, {
 } from "../components/home/ResturantItems";
 import BottomTabs from "../components/home/BottomTabs";
 import MenuItems from "../components/resturantDetail/MenuItems";
+import ViewCart from "../components/resturantDetail/ViewCart";
 
-export default function ResturantDetail({ route }) {
+export default function ResturantDetail({ route, navigation }) {
   return (
     <View>
       <About route={route} />
       <Divider width={0.8} style={{ marginVertical: 20 }} />
       <MenuItems />
+      <ViewCart navigation={navigation} resturantName={route.params.name} />
     </View>
   );
 }
