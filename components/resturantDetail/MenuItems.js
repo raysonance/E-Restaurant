@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { Divider } from "react-native-elements";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { useDispatch, useSelector } from "react-redux";
 
 export const foods = [
   {
@@ -32,53 +33,54 @@ export const foods = [
     price: "$6.98",
     description: "A most delicious indian dish.",
   },
-  {
-    title: "Lasagna",
-    image:
-      "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
-    price: "$13.50",
-    description: "With butter, lettuce, tomato and sauce bechamel",
-  },
-  {
-    title: "Chilaquies",
-    image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
-    price: "$6.98",
-    description: "Chilaquies with cheese and sause. A delicious mexican dish",
-  },
-  {
-    title: "Tandoori Chicken",
-    image:
-      "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGZvb2R8ZW58MHx8MHx8&w=1000&q=80",
-    price: "$6.98",
-    description: "A most delicious indian dish.",
-    },
-  
-  
-  
 ];
 
-export default function MenuItems() {
+export default function MenuItems({ resturantName }) {
   const height = 0.5 * Dimensions.get("window").height;
-    return (
-      <View style={{ height: height }}>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={{ marginBottom: '5%' }}
-        >
-          {foods.map((food, index) => (
-            <View key={index}>
-              <View style={styles.menuItemStyle}>
-                <BouncyCheckbox iconStyle={{ borderColor: 'lightgrey', borderRadius: 0,}} fillColor='green' />
-                <FoodInfo food={food} />
-                <FoodImage food={food} />
-              </View>
-              <Divider width={0.5} orientation="vertical" />
+
+  const items = useSelector(
+    (state) => state.cartReducer.selectedItems.items
+  );
+
+  const checking = (food, cartItems) => {
+      return Boolean(cartItems.find((check) => check.title == food.title))
+  }
+
+  const dispatch = useDispatch();
+
+  const selectItem = (item, checkboxValue) =>
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: {
+        ...item,
+        resturantName: resturantName,
+        checkboxValue: checkboxValue,
+      },
+    });
+  return (
+    <View style={{ height: height }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{ marginBottom: "5%" }}
+      >
+        {foods.map((food, index) => (
+          <View key={index}>
+            <View style={styles.menuItemStyle}>
+              <BouncyCheckbox
+                iconStyle={{ borderColor: "lightgrey", borderRadius: 0 }}
+                fillColor="green"
+                isChecked={checking(food, items)}
+                onPress={(checkboxValue) => selectItem(food, checkboxValue)}
+              />
+              <FoodInfo food={food} />
+              <FoodImage food={food} />
             </View>
-          ))}
-        </ScrollView>
-      </View>
-    );
+            <Divider width={0.5} orientation="vertical" />
+          </View>
+        ))}
+      </ScrollView>
+    </View>
+  );
 }
 
 const FoodInfo = (props) => (
