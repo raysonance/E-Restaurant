@@ -35,7 +35,7 @@ export const foods = [
   },
 ];
 
-export default function MenuItems({ resturantName }) {
+export default function MenuItems({ restaurantName }) {
   const height = 0.5 * Dimensions.get("window").height;
 
   const items = useSelector(
@@ -48,12 +48,12 @@ export default function MenuItems({ resturantName }) {
 
   const dispatch = useDispatch();
 
-  const selectItem = (item, checkboxValue) =>
+  const selectItem = (item, restaurantName, checkboxValue) =>
     dispatch({
       type: "ADD_TO_CART",
       payload: {
         ...item,
-        resturantName: resturantName,
+        restaurantName: restaurantName,
         checkboxValue: checkboxValue,
       },
     });
@@ -70,7 +70,7 @@ export default function MenuItems({ resturantName }) {
                 iconStyle={{ borderColor: "lightgrey", borderRadius: 0 }}
                 fillColor="green"
                 isChecked={checking(food, items)}
-                onPress={(checkboxValue) => selectItem(food, checkboxValue)}
+                onPress={(checkboxValue) => selectItem(food, restaurantName, checkboxValue)}
               />
               <FoodInfo food={food} />
               <FoodImage food={food} />

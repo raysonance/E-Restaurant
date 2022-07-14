@@ -28,7 +28,6 @@ export default function Home({ navigation }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         // set resturant data as local data if there is no data about that particular location
         data.businesses
           ? setresturantData(
