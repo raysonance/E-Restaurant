@@ -7,7 +7,7 @@ export const localRestaurants = [
   {
     name: "Beachside Bar",
     image_url:
-      "https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg",
+      "http://cdn.cnn.com/cnnnext/dam/assets/190708174158-la-reserve-a-la-plage-01.jpg",
     categories: [{ title: "Cafe" }, { title: "Bar" }],
     price: "$$$",
     reviews: 1244,
@@ -30,6 +30,15 @@ export const localRestaurants = [
     price: "$",
     reviews: 700,
     rating: 4.9,
+  },
+  {
+    name: "Pizza Stone",
+    image_url:
+      "https://media.istockphoto.com/photos/people-clinking-glasses-with-wine-over-table-with-italian-pizza-picture-id1192270298?k=20&m=1192270298&s=612x612&w=0&h=BwPEOpj7AS-_t3bIaIPbvXtSOb_kzRNXD9BM-q3RSLQ=",
+    categories: [{ title: "Pizza" }, { title: "Bar" }],
+    price: "$",
+    reviews: 700,
+    rating: 4.0,
   },
 ];
 

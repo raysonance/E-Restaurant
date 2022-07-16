@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Modal, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import OrderItem from "./OrderItem";
+import { collection, addDoc, db, serverTimestamp } from "../../firebase";
 
 export default function ViewCart() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -9,7 +10,6 @@ export default function ViewCart() {
   const { items, restaurantName } = useSelector(
     (state) => state.cartReducer.selectedItems
   );
-
 
   const total = items
     .map((item) => Number(item.price.replace("$", "")))
@@ -20,10 +20,25 @@ export default function ViewCart() {
     currency: "USD",
   });
 
+  const addOrderToFirebase = async () => {
+    try {
+      const docRef = await addDoc(collection(db, "orders"), {
+        items: items,
+        restaurantName: restaurantName,
+        createdAt: serverTimestamp(),
+      });
+      console.log("document witten with", docRef);
+    } catch (error) {
+      console.error("Error", error);
+    }
+
+    setModalVisible(false);
+  };
+
   const checkoutModalContent = () => {
     return (
       <>
-      <View style={styles.modalContainer}>
+        <View style={styles.modalContainer}>
           <View style={styles.modalCheckoutContainer}>
             <Text style={styles.restaurantName}>{restaurantName}</Text>
             {items.map((item, index) => (
@@ -45,7 +60,7 @@ export default function ViewCart() {
                   position: "relative",
                 }}
                 onPress={() => {
-                  setModalVisible(false);
+                  addOrderToFirebase()
                 }}
               >
                 <Text style={{ color: "white", fontSize: 20 }}>Checkout</Text>
@@ -66,7 +81,7 @@ export default function ViewCart() {
         </View>
       </>
     );
-  }
+  };
 
   return (
     <>
@@ -128,38 +143,37 @@ export default function ViewCart() {
   );
 }
 
+const styles = StyleSheet.create({
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(0,0,0,0.7)",
+  },
 
-  const styles = StyleSheet.create({
-    modalContainer: {
-      flex: 1,
-      justifyContent: "flex-end",
-      backgroundColor: "rgba(0,0,0,0.7)",
-    },
+  modalCheckoutContainer: {
+    backgroundColor: "white",
+    padding: 16,
+    height: 500,
+    borderWidth: 1,
+  },
 
-    modalCheckoutContainer: {
-      backgroundColor: "white",
-      padding: 16,
-      height: 500,
-      borderWidth: 1,
-    },
+  restaurantName: {
+    textAlign: "center",
+    fontWeight: "700",
+    fontSize: 18,
+    marginBottom: 10,
+  },
 
-    restaurantName: {
-      textAlign: "center",
-      fontWeight: "700",
-      fontSize: 18,
-      marginBottom: 10,
-    },
+  subtotalContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 15,
+  },
 
-    subtotalContainer: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      marginTop: 15,
-    },
-
-    subtotalText: {
-      textAlign: "left",
-      fontWeight: "600",
-      fontSize: 15,
-      marginBottom: 10,
-    },
-  });
+  subtotalText: {
+    textAlign: "left",
+    fontWeight: "600",
+    fontSize: 15,
+    marginBottom: 10,
+  },
+});
