@@ -27,7 +27,6 @@ export default function ViewCart({ navigation }) {
         restaurantName: restaurantName,
         createdAt: serverTimestamp(),
       });
-      console.log("document witten with", docRef);
     } catch (error) {
       console.error("Error", error);
     }
