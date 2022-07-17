@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import OrderItem from "./OrderItem";
 import { collection, addDoc, db, serverTimestamp } from "../../firebase";
 
-export default function ViewCart() {
+export default function ViewCart({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   const { items, restaurantName } = useSelector(
@@ -33,6 +33,7 @@ export default function ViewCart() {
     }
 
     setModalVisible(false);
+    navigation.navigate("OrderCompleted");
   };
 
   const checkoutModalContent = () => {
@@ -46,7 +47,7 @@ export default function ViewCart() {
             ))}
             <View style={styles.subtotalContainer}>
               <Text style={styles.subtotalText}>Subtotal</Text>
-              <Text>{totalUSD}</Text>
+              <Text>$ {totalUSD}</Text>
             </View>
             <View style={{ flexDirection: "row", justifyContent: "center" }}>
               <TouchableOpacity
@@ -60,7 +61,7 @@ export default function ViewCart() {
                   position: "relative",
                 }}
                 onPress={() => {
-                  addOrderToFirebase()
+                  addOrderToFirebase();
                 }}
               >
                 <Text style={{ color: "white", fontSize: 20 }}>Checkout</Text>
@@ -73,7 +74,7 @@ export default function ViewCart() {
                     top: 17,
                   }}
                 >
-                  {total ? totalUSD : ""}
+                  {total ? `$ ${totalUSD}` : ""}
                 </Text>
               </TouchableOpacity>
             </View>
