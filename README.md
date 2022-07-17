@@ -1,4 +1,4 @@
-# My Universal React Project
+# An Uber Eats clone i created with React Native, Yelp Api, Redux and Firebase for Backend.
 
 <p>
   <!-- iOS -->
@@ -14,6 +14,17 @@
     <img alt="Supports Expo Web" longdesc="Supports Expo Web" src="https://img.shields.io/badge/web-4630EB.svg?style=flat-square&logo=GOOGLE-CHROME&labelColor=4285F4&logoColor=fff" />
   </a>
 </p>
+
+![1](https://user-images.githubusercontent.com/76729273/179418022-9d4ad71b-e4b5-4a2f-ad46-115cb0bfb321.jpg)
+
+![2](https://user-images.githubusercontent.com/76729273/179418043-03a3fb2a-86a4-4b24-8dac-611c9bb5e2e0.jpg)
+
+![3](https://user-images.githubusercontent.com/76729273/179418049-4197b96d-dc28-4358-9bb7-3cf3f635aa85.jpg)
+
+![4](https://user-images.githubusercontent.com/76729273/179418058-b93b9bbf-ac24-4c9c-ad92-24d34ecc060d.jpg)
+
+![5](https://user-images.githubusercontent.com/76729273/179418061-5f89fbda-3b80-4467-b2cf-23e23df180a9.jpg)
+
 
 ## 🚀 How to use
 
