@@ -1,4 +1,4 @@
-# A mobile restaurant app (Uber Eats clone) built with React Native, Yelp Api, Redux and Firebase for Android and Ios.
+# A mobile restaurant app (Uber Eats clone) built with React Native, Yelp Api, Redux and Firebase for Android and IOS.
 
 <p>
   <!-- iOS -->
