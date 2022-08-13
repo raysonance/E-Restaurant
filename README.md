@@ -15,18 +15,12 @@
   </a>
 </p>
 
-![1](https://user-images.githubusercontent.com/76729273/179418022-9d4ad71b-e4b5-4a2f-ad46-115cb0bfb321.jpg)
 
-![6](https://user-images.githubusercontent.com/76729273/179418252-0b791e4f-4a1d-44cb-b901-b7d7ccd8519e.png)
 
-![2](https://user-images.githubusercontent.com/76729273/179418043-03a3fb2a-86a4-4b24-8dac-611c9bb5e2e0.jpg)
 
-![3](https://user-images.githubusercontent.com/76729273/179418049-4197b96d-dc28-4358-9bb7-3cf3f635aa85.jpg)
-
-![4](https://user-images.githubusercontent.com/76729273/179418058-b93b9bbf-ac24-4c9c-ad92-24d34ecc060d.jpg)
-
-![5](https://user-images.githubusercontent.com/76729273/179418061-5f89fbda-3b80-4467-b2cf-23e23df180a9.jpg)
-
+Android             |  iPhone
+:-------------------------:|:-------------------------:
+<img src="https://user-images.githubusercontent.com/76729273/179418022-9d4ad71b-e4b5-4a2f-ad46-115cb0bfb321.jpg" width="300"  height="600">  |  ![6](https://user-images.githubusercontent.com/76729273/179418252-0b791e4f-4a1d-44cb-b901-b7d7ccd8519e.png)
 
 ## 🚀 How to use
 
